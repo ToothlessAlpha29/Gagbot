@@ -1,4 +1,6 @@
+const { ButtonBuilder } = require("discord.js");
 const { getCollar, getOtherKeysCollar, getClonedCollarKey } = require("./collarfunctions");
+const { getOption } = require("./configfunctions");
 const { getGags, getMitten } = require("./gagfunctions");
 const { getHeadwearRestrictions, getHeadwear } = require("./headwearfunctions");
 const { getHeavyRestrictions, getHeavy } = require("./heavyfunctions");
@@ -150,6 +152,11 @@ function doHeadpatFunctions(headpatter, recipient, returnedobject) {
 async function handleTouchEvent(user, target, type) {
 	return new Promise(async (res, rej) => {
 		let hasOption = getOption(target.id, `receive${type}`);
+        if (user.id === target.id) { 
+            res(true) 
+            return;
+        } // We're okay with touching ourselves.
+        
         let iskeyholder = false;
         
         if (getCollar(target.id)?.keyholder == user.id) { iskeyholder = true }
@@ -162,10 +169,12 @@ async function handleTouchEvent(user, target, type) {
         if (hasOption === "everyonenoprompt") {
             // Nothing needs to be done here.
             res(true)
+            return;
         } 
         if (hasOption === "everyone" && iskeyholder) {
             // Keyholders get to skip the line
             res(true)
+            return;
         }
         if (hasOption === "keyholdernoprompt") {
             if (iskeyholder) {

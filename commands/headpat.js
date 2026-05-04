@@ -6,7 +6,7 @@ const { getConsent, handleConsent, collarPermModal } = require("./../functions/i
 const { getText } = require("./../functions/textfunctions.js");
 const { getOption } = require("../functions/configfunctions.js");
 const { getUserTags } = require("../functions/configfunctions.js");
-const { rollPatChance } = require("../functions/touchfunctions.js");
+const { rollPatChance, handleTouchEvent } = require("../functions/touchfunctions.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -37,39 +37,54 @@ module.exports = {
 				},
 			};
 
-            let headpatattempt = rollPatChance(interaction.user.id, targetuser.id)
-            data.headpat = true;
+            await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+            await handleTouchEvent(interaction.user, targetuser, "headpat").then(
+                async (success) => {
+                    await interaction.followUp({ content: `Headpatting ${targetuser}`, flags: MessageFlags.Ephemeral })
+                    let headpatattempt = rollPatChance(interaction.user.id, targetuser.id)
+                    data.headpat = true;
 
-            if (interaction.user.id == targetuser.id) {
-                data.self = true;
-            }
-            else {
-                data.other = true;
-            }
+                    if (interaction.user.id == targetuser.id) {
+                        data.self = true;
+                    }
+                    else {
+                        data.other = true;
+                    }
 
-            if (headpatattempt.hit) {
-                data.hit = true;
-            }
-            else {
-                data.nohit = true;
-            }
+                    if (headpatattempt.hit) {
+                        data.hit = true;
+                    }
+                    else {
+                        data.nohit = true;
+                    }
 
-            if (headpatattempt.crit) {
-                data.crit = true;
-            }
-            else {
-                data.nocrit = true;
-            }
+                    if (headpatattempt.crit) {
+                        data.crit = true;
+                    }
+                    else {
+                        data.nocrit = true;
+                    }
 
-            if (headpatattempt.boundmiss) {
-                data[headpatattempt.boundmiss] = true;
-            }
-            else {
-                data.noboundmiss = true;
-            }
+                    if (headpatattempt.boundmiss) {
+                        data[headpatattempt.boundmiss] = true;
+                    }
+                    else {
+                        data.noboundmiss = true;
+                    }
 
-            interaction.reply({ content: getText(data) });
-
+                    interaction.followUp({ content: getText(data) });
+                },
+                async (reject) => {
+                    let nomessage = `${targetuser} rejected the headpat.`;
+                    if (reject == "Error") {
+                        nomessage = `Something went wrong - Submit a bug report!`;
+                    }
+                    if (reject == "NoDM") {
+                        nomessage = `Something went wrong sending a DM to ${targetuser}, or ${getPronouns(chastityuser.id, "subject")} ${getPronouns(chastityuser.id, "subject") == "they" ? `have` : "has"} DMs from this server disabled. Cannot obtain consent to touch.`;
+                    }
+                    await interaction.followUp({ content: nomessage });
+                },
+            );
 		} catch (err) {
 			console.log(err);
 		}
