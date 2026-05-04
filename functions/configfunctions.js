@@ -122,9 +122,9 @@ const configoptions = {
 				return false;
 			}, // if true, button is greyed out
 		},
-        receiveheadpats: {
+        receiveheadpat: {
 			name: "Recieve Headpats",
-			desc: "Who is a allowed to headpat you?",
+			desc: "Who is allowed to headpat you?",
 			choices: [
 				{
 					name: "Everyone",
@@ -2648,7 +2648,7 @@ function getOption(userID, option) {
 		initializeOptions(userID);
 	}
 	if (process.configs.users[userID][option] == undefined) {
-		let pages = ["Arousal", "General", "Misc", "Extreme", "Content"];
+		let pages = ["Me", "Arousal", "General", "Misc", "Extreme", "Content"];
 		pages.forEach((p) => {
 			let optionspages = Object.keys(configoptions[p]);
 			optionspages.forEach((k) => {
@@ -2696,7 +2696,7 @@ function getAllSelectedOption(option) {
 }
 
 function initializeOptions(userID) {
-	let pages = ["Arousal", "General", "Misc", "Extreme", "Content"];
+	let pages = ["Me", "Arousal", "General", "Misc", "Extreme", "Content"];
 	pages.forEach((p) => {
 		let optionspages = Object.keys(configoptions[p]);
 		optionspages.forEach((k) => {
