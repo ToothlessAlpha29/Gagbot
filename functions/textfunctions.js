@@ -1879,6 +1879,8 @@ const texts_touch = {
                         `There may have been thousands of headpats before, but the one USER_TAG is giving TARGET_TAG now is a perfectly unique one!`,
                         `A different sound is heard as USER_TAG places USER_THEIR hand on TARGET_TAG. The headpat leaves TARGET_THEM in a bubbly glee!`,
                         `USER_TAG disappears for a brief moment and then appears behind TARGET_TAG, giving TARGET_THEM a stealthy critical pat before TARGET_THEY spotTARGET_S USER_THEM!`
+                        `USER_TAG limit breaks and casts a super-pat on TARGET_TAG! TARGET_THEY_CAP TARGET_ISARE left stunned from the sensation!`
+                        `USER_TAG meditates for a moment and then gently places USER_THEIR hand on TARGET_TAG, moving at such a practiced and deliberate pace. The efforts pay off as TARGET_THEY melt under the gentlest, bestest of pats!`
                     ]
                 },
                 nocrit: {
@@ -1891,7 +1893,14 @@ const texts_touch = {
                         `USER_TAG places USER_THEIR hand on TARGET_TAG's head. It's a gentle headpat, endearing even!`,
                         `USER_TAG dances USER_THEIR fingers over TARGET_TAG's head and through TARGET_THEIR hair! It provides a faintly ticklish sensation!`,
                         `USER_TAG gives TARGET_TAG a headpat, running USER_THEIR fingers back and forth a bit to ruffle TARGET_THEIR hair!`,
-                        `USER_TAG gently pats TARGET_TAG's head. Pat pat pat!`
+                        `USER_TAG gently pats TARGET_TAG's head. Pat pat pat!`,
+                        `USER_TAG conjures a ghostly hand to run over TARGET_TAG's head. It ruffles TARGET_THEIR hair and returns back to it's conjurer!`,
+                        `USER_TAG places a hand on TARGET_TAG's head, giggling to USER_THEMSELF as TARGET_THEY leanTARGET_S into the pat!`,
+                        `Because TARGET_TAG is absolutely adorable, USER_TAG pats TARGET_THEIR head!`,
+                        `USER_TAG places a single finger on TARGET_TAG's head... then adds more one by one before lowering USER_THEIR hand fully onto TARGET_THEIR head. **Pat.**`,
+                        `USER_TAG imagines USER_THEY are petting a pet as USER_THEY place USER_THEIR hand on TARGET_TAG's head.`,
+                        `USER_TAG places USER_THEIR hand on TARGET_TAG's head. TARGET_THEY_CAP nuzzles into USER_THEIR hand with zero thoughts!`,
+                        `USER_TAG considers pouncing on TARGET_TAG to tie TARGET_THEM up, but instead opts to pat TARGET_THEM. The bondage can wait for later!`
                     ]
                 }
             },
