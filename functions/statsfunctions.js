@@ -39,7 +39,7 @@ function statsGetCounter(user, countername) {
  * - (string) countername - ID of the counter to increment
  * - (any) value - Value to store in countername
  **********/
-function statsGetCounter(user, countername, value) {
+function statsSetCounter(user, countername, value) {
     if (process.userstats == undefined) { process.userstats = {} }
     if (process.userstats[user] == undefined) { process.userstats[user] = {} }
     process.userstats[user][countername] = value;
@@ -48,3 +48,7 @@ function statsGetCounter(user, countername, value) {
     }
     process.readytosave.userstats = true;
 }
+
+exports.statsAddCounter = statsAddCounter;
+exports.statsGetCounter = statsGetCounter;
+exports.statsSetCounter = statsSetCounter;

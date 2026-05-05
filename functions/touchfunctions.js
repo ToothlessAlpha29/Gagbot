@@ -9,6 +9,7 @@ const { getChastityBra } = require("./vibefunctions");
 const { getClonedChastityKey, getChastity } = require("./vibefunctions");
 const { getClonedChastityBraKey } = require("./vibefunctions");
 const { getWearable } = require("./wearablefunctions");
+const { statsAddCounter } = require("./statsfunctions");
 
 /****************
  * Rolls a Pat based on the user's bondage and the target's bondage. If hit is false, then boundmiss will note the reason, if it is due to the user being bound. 
@@ -87,6 +88,12 @@ function rollPatChance(user, target) {
     // Do all of the functions for the person receiving the headpats.
     // Note, within the function we need to check if headpat was successful! 
     doHeadpatFunctions(user, target, returnedobject)
+
+    statsAddCounter(user, "headpatsgiven");
+    statsAddCounter(target, "headpatsreceived");
+    if (user == target) {
+        statsAddCounter(target, "headpatsself");
+    }
 
     return returnedobject;
 }
