@@ -10,15 +10,17 @@ const { getChastityBraName } = require("../../functions/vibefunctions.js");
 const { getChastityName, assignChastity } = require("../../functions/vibefunctions.js");
 const { getChastity } = require("../../functions/vibefunctions.js");
 const { getWearable, getLockedWearable, deleteWearable, getWearableName, assignWearable } = require("../../functions/wearablefunctions.js");
-const { addArousal } = require("../../functions/vibefunctions")
+const { getBaseToy, getToys, assignToy } = require("../../functions/toyfunctions");
+const { addArousal } = require("../../functions/vibefunctions");
 //const { mimicCostumes } = require('./mimic/mimicCostumes.js')
 
-// File Containing Costumer Mimic Outfits - Wearables, Headwear, Mittens, Gags, Heavy. Only one Heavy item per outfit, and always at the end.
+// File Containing Costumer Mimic Outfits - Wearables, Headwear, Mittens, Gags, Heavy. For Static Heavies at the end of the outfit the type 'end' can be used to access specific texts.
 
 // Validated 05/05/26
 const maid_outfit = [
     { category: "wearable", itemtowear: "garters", color: "White" },
     { category: "wearable", itemtowear: "stockings", color: "White" },
+    { category: "toy", itemtowear: "vibe_polite", color: null },
     { category: "chastitybelt", itemtowear: "belt_maid", color: null },
     { category: "chastitybra", itemtowear: "bra_maid", color: null },
     { category: "mittens", itemtowear: "mittens_maid", color: null },
@@ -29,7 +31,7 @@ const maid_outfit = [
     { category: "headwear", itemtowear: "mask_kigu_cutemaid", color: null },
     { category: "wearable", itemtowear: "maid_headdress", color: null },
     { category: "heavy", itemtowear: "straitjacket_maid", color: null },
-    { category: "end", itemtowear: "legbinder_maid", color: null },
+    { category: "heavy", itemtowear: "legbinder_maid", color: null },
 ];
 
 // Validated 05/05/26
@@ -41,6 +43,7 @@ const ponygirl_outfit = [
     { category: "wearable", itemtowear: "ponytack_leather", color: "Red" },
     { category: "heavy", itemtowear: "armbinder_leather", color: null },
     { category: "wearable", itemtowear: "ponyboots_leather", color: "Red" },
+    { category: "heavy", itemtowear: "rope_hobble", color: null },
     { category: "headwear", itemtowear: "blindfold_leather", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "wearable", itemtowear: "headharness_leather", color: "Red" },
@@ -48,9 +51,9 @@ const ponygirl_outfit = [
     { category: "end", itemtowear: "leashing_post", color: null },
 ];
 
+// Validated 05/05/26
 const bunnygirl_outfit = [
     { category: "wearable", itemtowear: "outfit_playbunny_headwear", color: "Blue" },
-    { category: "chastitybelt", itemtowear: "belt_ardour", color: null },
     { category: "wearable", itemtowear: "bunnytights", color: "White" },
     { category: "wearable", itemtowear: "suit_outfit", color: "Playbunny" },
     { category: "wearable", itemtowear: "highheels", color: "Blue" },
@@ -60,9 +63,11 @@ const bunnygirl_outfit = [
     { category: "mittens", itemtowear: "mittens_leather", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "headwear", itemtowear: "mask_bunny", color: null },
-    { category: "heavy", itemtowear: "armbinder_leather", color: null },
+    { category: "chastitybelt", itemtowear: "belt_seal_fire", color: null },
+    { category: "end", itemtowear: "armbinder_leather", color: null },
 ];
 
+// Validated 05/05/26
 const princess_outfit = [
     { category: "wearable", itemtowear: "bra_lacy", color: "Pink" },
     { category: "wearable", itemtowear: "panties_lacy", color: "Pink" },
@@ -79,6 +84,7 @@ const princess_outfit = [
     { category: "heavy", itemtowear: "dress_binding", color: null },
 ];
 
+// Validated 05/05/26
 const lewd_princess_outfit = [
     { category: "wearable", itemtowear: "panties_lacy", color: "Black" },
     { category: "wearable", itemtowear: "stockings", color: "Black" },
@@ -95,6 +101,7 @@ const lewd_princess_outfit = [
     { category: "heavy", itemtowear: "boxbinder_leather", color: null },
 ];
 
+// Validated 05/05/26
 const kitsune_outfit = [
     { category: "wearable", itemtowear: "lingerie", color: "Indigo" },
     { category: "wearable", itemtowear: "thighhighs", color: "White" },
@@ -107,9 +114,10 @@ const kitsune_outfit = [
     { category: "mittens", itemtowear: "mittens_leather", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "collar", itemtowear: "collar_inari", color: null },
-    { category: "heavy", itemtowear: "ribbons", color: null },
+    { category: "end", itemtowear: "ribbons", color: null },
 ];
 
+// Validated 05/05/26
 const librarian_outfit = [
     { category: "wearable", itemtowear: "rope_karada", color: "Red" },
     { category: "wearable", itemtowear: "thighband_leather", color: "Brown" },
@@ -125,6 +133,7 @@ const librarian_outfit = [
     { category: "heavy", itemtowear: "straitjacket_comfy", color: null },
 ];
 
+// Validated 05/05/26
 const rogue_outfit = [
     { category: "wearable", itemtowear: "panties_leather", color: "Gray" },
     { category: "wearable", itemtowear: "bra_leather", color: "Gray" },
@@ -141,10 +150,12 @@ const rogue_outfit = [
     { category: "heavy", itemtowear: "boxbinder_hisec", color: null },
 ];
 
+// Validated 05/05/26
 const dancer_outfit = [
     { category: "headwear", itemtowear: "blindfold_cloth", color: null },
     { category: "collar", itemtowear: "collar_moon", color: null },
-    { category: "chastitybelt", itemtowear: "belt_ardour", color: null },
+    { category: "toy", itemtowear: "vibe_pulse", color: null },
+    { category: "chastitybelt", itemtowear: "belt_seal_earth", color: null },
     { category: "wearable", itemtowear: "armbands", color: "Gold" },
     { category: "wearable", itemtowear: "bracelets", color: "Gold" },
     { category: "wearable", itemtowear: "anklets", color: "Gold" },
@@ -156,9 +167,10 @@ const dancer_outfit = [
     { category: "mittens", itemtowear: "mittens_leather", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "wearable", itemtowear: "veil", color: "Half-Face" },
-    { category: "heavy", itemtowear: "displaystand", color: null },
+    { category: "end", itemtowear: "pole_dancer", color: null },
 ];
 
+// Validated 05/05/26
 const paladin_outfit = [
     { category: "wearable", itemtowear: "bodystocking", color: "Black" },
     { category: "wearable", itemtowear: "harness_leather", color: "Leather" },
@@ -171,9 +183,10 @@ const paladin_outfit = [
     { category: "mittens", itemtowear: "mittens_leather", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "collar", itemtowear: "collar_steel", color: null },
-    { category: "heavy", itemtowear: "yoke", color: null },
+    { category: "end", itemtowear: "yoke", color: null },
 ];
 
+// Validated 05/05/26
 const ranger_outfit = [
     { category: "wearable", itemtowear: "bra_lacy", color: "Green" },
     { category: "wearable", itemtowear: "panties_lacy", color: "Green" },
@@ -190,12 +203,13 @@ const ranger_outfit = [
     { category: "heavy", itemtowear: "rope_hogtie", color: null },
 ];
 
+// Validated 05/05/26
 const healer_outfit = [
     { category: "headwear", itemtowear: "blindfold_cloth", color: null },
     { category: "collar", itemtowear: "collar_star", color: null },
     { category: "gag", itemtowear: "politeSub", color: null },
     { category: "wearable", itemtowear: "stockings", color: "White" },
-    { category: "wearable", itemtowear: "gloves_opera", color: "White" },
+    { category: "toy", itemtowear: "vibe_headpatbattery", color: null },
     { category: "chastitybelt", itemtowear: "belt_ancient", color: null },
     { category: "chastitybra", itemtowear: "bra_ancient", color: null },
     { category: "wearable", itemtowear: "shrine_maiden", color: "White" },
@@ -206,9 +220,10 @@ const healer_outfit = [
     { category: "mittens", itemtowear: "mittens_leather", color: null },
     { category: "wearable", itemtowear: "staff", color: "Gohei" },
     { category: "wearable", itemtowear: "leash", color: "White" },
-    { category: "heavy", itemtowear: "armbinder_ancient", color: null },
+    { category: "end", itemtowear: "armbinder_ancient", color: null },
 ];
 
+// Validated 05/05/26
 const witch_outfit = [
     { category: "headwear", itemtowear: "blindfold_blackout", color: null },
     { category: "wearable", itemtowear: "bra_lacy", color: "Purple" },
@@ -222,9 +237,10 @@ const witch_outfit = [
     { category: "mittens", itemtowear: "mittens_hardlight", color: null },
     { category: "gag", itemtowear: "ball", color: null },
     { category: "collar", itemtowear: "collar_runic", color: null },
-    { category: "heavy", itemtowear: "shadowhands", color: null },
+    { category: "end", itemtowear: "shadowhands", color: null },
 ];
 
+// Validated 05/05/26
 const angel_outfit = [
     { category: "headwear", itemtowear: "blindfold_cloth", color: null },
     { category: "wearable", itemtowear: "halo", color: "Angelic" },
@@ -236,16 +252,18 @@ const angel_outfit = [
     { category: "chastitybra", itemtowear: "bra_featherlight", color: null },
     { category: "wearable", itemtowear: "nightie_sheer", color: "White" },
     { category: "mittens", itemtowear: "mittens_hardlight", color: null },
+    { category: "heavy", itemtowear: "hardlight_fetters", color: null },
     { category: "gag", itemtowear: "politeSub", color: null },
     { category: "collar", itemtowear: "collar_star", color: null },
     { category: "wearable", itemtowear: "tome", color: "Angelic Tome" },
     { category: "wearable", itemtowear: "wingbinders", color: "White" },
     { category: "wearable", itemtowear: "leash", color: "White" },
-    { category: "heavy", itemtowear: "scavengersdaughter", color: null },
+    { category: "end", itemtowear: "fiddle", color: null },
 ];
 
+// Validated 05/05/26
 const mermaid_outfit = [
-    { category: "wearable", itemtowear: "mermaid_latex", color: "Aqua" },
+    { category: "heavy", itemtowear: "legbinder_latexmermaidtail", color: null },
     { category: "wearable", itemtowear: "armbands", color: "Cobalt" },
     { category: "wearable", itemtowear: "headchain", color: "Crystal" },
     { category: "wearable", itemtowear: "bikini", color: "Skimpy" },
@@ -253,12 +271,13 @@ const mermaid_outfit = [
     { category: "mittens", itemtowear: "mittens_hardlight", color: null },
     { category: "collar", itemtowear: "collar_moon", color: null },
     { category: "gag", itemtowear: "silent", color: null },
-    { category: "wearable", itemtowear: "staff", color: "Elemental Staff" },
     { category: "heavy", itemtowear: "armbinder_latex", color: null },
+    { category: "end", itemtowear: "mermaid_tank", color: null },
 ];
 
+// Validated 05/05/26
 const mer_maid_outfit = [
-    { category: "wearable", itemtowear: "mermaid_latex", color: "Black" },
+    { category: "heavy", itemtowear: "legbinder_shadowlatexmermaidtail", color: null },
     { category: "wearable", itemtowear: "bikini", color: "Frilly" },
     { category: "wearable", itemtowear: "sleeves_detatched", color: "Black" },
     { category: "wearable", itemtowear: "maid_apron", color: null },
@@ -268,8 +287,10 @@ const mer_maid_outfit = [
     { category: "headwear", itemtowear: "mask_kigu_sadisticmaid", color: null },
     { category: "wearable", itemtowear: "maid_headdress", color: null },
     { category: "heavy", itemtowear: "straitjacket_maid", color: null },
+    { category: "end", itemtowear: "mermaid_tank", color: null },
 ];
 
+// Validated 05/05/26
 const cheerleader_outfit = [
     { category: "wearable", itemtowear: "thighhighs", color: "White" },
     { category: "wearable", itemtowear: "gloves_fingerlesselbow", color: "White" },
@@ -280,10 +301,12 @@ const cheerleader_outfit = [
     { category: "wearable", itemtowear: "pumps", color: "White" },
     { category: "mittens", itemtowear: "mittens_pompom", color: null },
     { category: "collar", itemtowear: "collar_moon", color: null },
-    { category: "gag", itemtowear: "goodSub", color: null },
+    { category: "gag", itemtowear: "uwu", color: null },
+    { category: "toy", itemtowear: "vibe_reverb", color: null },
     { category: "headwear", itemtowear: "mask_kigu_teto", color: null },
 ];
 
+// Validated 05/05/26
 const dryad_outfit = [
     { category: "wearable", itemtowear: "anklets", color: "Floral" },
     { category: "wearable", itemtowear: "bracelets", color: "Floral" },
@@ -298,29 +321,29 @@ const dryad_outfit = [
     { category: "wearable", itemtowear: "bikini", color: "Leaf" },
     { category: "wearable", itemtowear: "pareo", color: "Leafy" },
     { category: "wearable", itemtowear: "sandals_strappy", color: "Leafy" },
-    { category: "heavy", itemtowear: "entangling_vines", color: null },
+    { category: "end", itemtowear: "entangling_vines", color: null },
 ];
 
 
 const mimicCostumes = {
-    //maid_outfit: maid_outfit,
-    //ponygirl_outfit: ponygirl_outfit,
+    maid_outfit: maid_outfit,
+    ponygirl_outfit: ponygirl_outfit,
     bunnygirl_outfit: bunnygirl_outfit,
-    //princess_outfit: princess_outfit,
-    //lewd_princess_outfit: lewd_princess_outfit,
-    //kitsune_outfit: kitsune_outfit,
-    //librarian_outfit: librarian_outfit,
-    //rogue_outfit: rogue_outfit,
-    //dancer_outfit: dancer_outfit,
-    //paladin_outfit: paladin_outfit,
-    //ranger_outfit: ranger_outfit,
-    //healer_outfit: healer_outfit,
-    //witch_outfit: witch_outfit,
-    //angel_outfit: angel_outfit,
-    //mermaid_outfit: mermaid_outfit,
-    //mer_maid_outfit: mer_maid_outfit,
-    //cheerleader_outfit: cheerleader_outfit,
-    //dryad_outfit: dryad_outfit,
+    princess_outfit: princess_outfit,
+    lewd_princess_outfit: lewd_princess_outfit,
+    kitsune_outfit: kitsune_outfit,
+    librarian_outfit: librarian_outfit,
+    rogue_outfit: rogue_outfit,
+    dancer_outfit: dancer_outfit,
+    paladin_outfit: paladin_outfit,
+    ranger_outfit: ranger_outfit,
+    healer_outfit: healer_outfit,
+    witch_outfit: witch_outfit,
+    angel_outfit: angel_outfit,
+    mermaid_outfit: mermaid_outfit,
+    mer_maid_outfit: mer_maid_outfit,
+    cheerleader_outfit: cheerleader_outfit,
+    dryad_outfit: dryad_outfit,
 };
 
 //*/ Shuffler Application
@@ -365,8 +388,8 @@ let functiontick = async (userID) => {
 
     // Only update a max of once every 20 seconds. 
     if ((process.userevents[userID].costumermimic.nextupdate ?? 0) < Date.now()) {
-        process.userevents[userID].costumermimic.nextupdate = Date.now() + 2000; // Test Speed
-        //process.userevents[userID].costumermimic.nextupdate = Date.now() + 20000;
+        //process.userevents[userID].costumermimic.nextupdate = Date.now() + 2000; // Test Speed
+        process.userevents[userID].costumermimic.nextupdate = Date.now() + 20000;
     }
     else { return };
 
@@ -626,7 +649,7 @@ let functiontick = async (userID) => {
                     data.heavyrestraint = true;
                     data.textdata.c1 = getHeavy(userID, nextitem.itemtowear).displayname; // heavy name
                     data.add = true;
-                    
+
                     //Send Message to Channel
                     messageSendChannel(getText(data), process.recentmessages[userID]);
                 }
@@ -634,6 +657,22 @@ let functiontick = async (userID) => {
                 process.userevents[userID].costumermimic.costumeidx++;
                 break;
 
+            case "toy":
+                if (!getToys(userID).find((t) => t.type === nextitem.itemtowear)) {
+                    // Assign the Toy at a random power between 1 and 5
+                    assignToy(userID, getHeavy(userID).origbinder, Math.max(Math.round(Math.random() * 5), 1), nextitem.itemtowear, getHeavy(userID).origbinder);
+                    
+                    // Configure Message Parameters                    
+                    data.toy = true;
+                    data.textdata.c1 = getBaseToy(nextitem.itemtowear)?.toyname;
+                    data.add = true;
+                    
+                    //Send Message to Channel
+                    messageSendChannel(getText(data), process.recentmessages[userID]);
+                }
+                // Increment Costume Index
+                process.userevents[userID].costumermimic.costumeidx++;
+                break;
             default:
                 // Unknown Item Category in Outfit
                 data.unknown = true;
