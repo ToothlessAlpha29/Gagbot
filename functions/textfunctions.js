@@ -887,7 +887,7 @@ const texts_heavy = {
                         only: (t) => {
                             return t.c2.includes("Dancer's Pole");
                         },
-                        text: `USER_TAG climbs onto the stage, stalking over to the VAR_C2 and beginning to dance sensuously for the pleasure of USER_THEIR Audience!`,
+                        text: `USER_TAG climbs onto the stage, stalking over to the VAR_C2 and beginning to dance sensuously for the pleasure of USER_THEIR audience!`,
                     },
                 ]
             },
@@ -1074,7 +1074,7 @@ const texts_heavy = {
                         only: (t) => {
                             return t.c3.includes("Dancer's Pole");
                         },
-                        text: `USER_TAG helps TARGET_TAG climb onto the stage and pushes TARGET_THEMSELF gently towards the VAR_C3, swatting TARGET_THEM on the ass before climbing down and settling into a comfortable seat to watch TARGET_TAG dancing sensually for USER_THEIR enjoyment~!`,
+                        text: `USER_TAG helps TARGET_TAG climb onto the stage and pushes TARGET_THEM gently towards the VAR_C3, swatting TARGET_THEM on the ass before climbing down and settling into a comfortable seat to watch TARGET_TAG dancing sensually for USER_THEIR enjoyment!`,
                     },
                 ]
             },
@@ -1375,7 +1375,7 @@ const texts_struggle = {
 			required: (t) => {
 				return t.c1.includes("Dancer's Pole");
 			},
-			text: `USER_TAG considers stepping away from the VAR_C1 but can't bring USER_THEMSELF to disappoint USER_THEIR audience! USER_THEY will just have to keep dancing until USER_THEY have finished USER_THEIR performance~`,
+			text: `USER_TAG considers stepping away from the VAR_C1 but can't bring USER_THEMSELF to disappoint USER_THEIR audience! USER_THEY will just have to keep dancing until USER_THEY have finished USER_THEIR performance!`,
 		},
 		{
 			required: (t) => {
