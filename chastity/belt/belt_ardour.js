@@ -12,3 +12,6 @@ exports.orgasmArousalLeft = (data) => { return 0.05 }
 
 // Name
 exports.name = "Belt of Undying Ardour"
+
+// Tags
+exports.tags = ["chastity"]

@@ -1,7 +1,7 @@
 // Standard belt
 exports.denialCoefficient = (data) => { return 7.5 }
 
-exports.tags = ["leather"]
+exports.tags = ["leather", "chastity"]
 
 // Name
 exports.name = "Wolf Panties"

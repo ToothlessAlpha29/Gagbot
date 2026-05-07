@@ -33,6 +33,6 @@ exports.onUnequip = (data) => {
 }
 
 // Tags
-exports.tags = ["living"]
+exports.tags = ["living", "chastity"]
 // Name
 exports.name = "Livingwood Belt"

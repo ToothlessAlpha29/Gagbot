@@ -38,6 +38,39 @@ const configoptions = {
 				return false;
 			},
 		},
+        kinklistlink: {
+			name: "Kink List Link",
+			desc: "Set a kink list link when people /inspect you",
+			descmodal: "Paste the exact link to direct users to when inspecting you.",
+			choices: [
+				{
+					name: "Set Link",
+					helptext: "Link set to \n",
+					helptextnone: "*No kink list link*",
+					select_function: (userID) => {
+						return false;
+					},
+					value: "None",
+					style: ButtonStyle.Primary,
+				},
+			],
+			customtext: (userID) => {
+				return `https://discord.gg/`;
+			},
+			placeholder: (userID) => {
+				return `https://discord.gg/`;
+			},
+            textvaluedisplay: (val) => {
+                return val;
+            },
+			menutype: "choice_textentry",
+			default: (userID) => {
+				return ``;
+			},
+			disabled: () => {
+				return false;
+			},
+		},
         pronouns: {
 			name: "Pronouns",
 			desc: "Which pronouns should the bot use when referring to you?",
@@ -1418,6 +1451,44 @@ const configoptions = {
 		"wearabletags-piercing": {
             name: "Piercing",
             desc: "Piercings, be it tongue, nose, or body",
+            choices: [
+				{
+					name: "None",
+					helptext: "*Others will not be able to put items of this tag on you*",
+					select_function: (userID) => {
+						return false;
+					},
+					value: "none",
+					style: ButtonStyle.Danger,
+				},
+				{
+					name: "Yes",
+					helptext: "Items of this tag can be added to you",
+					select_function: (userID) => {
+						return false;
+					},
+					value: "enabled",
+					style: ButtonStyle.Primary,
+				},
+                {
+					name: "Preferred",
+					helptext: "Items of this tag will have priority in random effects on you",
+					select_function: (userID) => {
+						return false;
+					},
+					value: "preferred",
+					style: ButtonStyle.Success,
+				},
+			],
+			menutype: "choice",
+			default: "enabled",
+			disabled: (userID) => {
+				return false;
+			},
+        },
+        "wearabletags-chastity": {
+            name: "Chastity",
+            desc: "Restraints which restrict access to genitals",
             choices: [
 				{
 					name: "None",

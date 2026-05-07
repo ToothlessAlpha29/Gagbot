@@ -4,3 +4,6 @@ exports.denialCoefficient = (data) => { return 2000 }
 
 // Name
 exports.name = "Chastity Belt of Eternal Denial"
+
+// Tags
+exports.tags = ["chastity"]

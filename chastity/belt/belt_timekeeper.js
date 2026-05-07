@@ -10,3 +10,6 @@ exports.denialCoefficient = (data) => { return 10 }
 
 // Name
 exports.name = "Timekeeper's Belt"
+
+// Tags
+exports.tags = ["chastity"]

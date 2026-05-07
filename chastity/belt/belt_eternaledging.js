@@ -18,3 +18,6 @@ exports.growthCoefficient = (data) => { return 1.0 } // 100% higher than usual f
 
 // Name
 exports.name = "Chastity Belt of Eternal Edging"
+
+// Tags
+exports.tags = ["chastity"]

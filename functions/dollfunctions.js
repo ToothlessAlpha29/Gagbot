@@ -401,6 +401,21 @@ async function textGarbleDOLL(msg, modifiedmessage, outtextin) {
 	return { modifiedmessage: modified, outtext: outtext, dollIDDisplay: dollIDDisplay, dollProtocolViolations: dollProtocolViolations };
 }
 
+async function textGarbleDrone(msg, modifiedmessage, outtextin) {
+    for (let i = 6; i > 2; i--) {
+        if (i > 3) {
+            let digits = parseInt(getOption(msg.author.id, "dollvisorname").slice(i))
+            if (digits == getOption(msg.author.id, "dollvisorname").slice(i)) {
+                i = 4;
+            }
+        }
+        else {
+            digits = msg.author.id.slice(-4);
+        }
+    }
+    return { modifiedmessage: "`" + digits + " :: " + outtextin + "`", dollIDDisplay: `HexCorp Drone ${digits}` }
+}
+
 // Exports
 exports.checkDollification = checkDollification;
 //exports.punishDoll = punishDoll;

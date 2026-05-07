@@ -12,3 +12,6 @@ exports.vibelevel = (data) => { return 1 };
 
 // Name
 exports.name = "Featherlight Bra"
+
+// Tags
+exports.tags = ["chastity"]

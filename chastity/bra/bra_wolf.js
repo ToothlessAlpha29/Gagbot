@@ -1,4 +1,4 @@
 // Name
 exports.name = "Wolf Bra"
 
-exports.tags = ["leather"]
+exports.tags = ["leather", "chastity"]

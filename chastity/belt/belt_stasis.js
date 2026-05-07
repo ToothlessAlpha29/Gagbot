@@ -20,3 +20,6 @@ exports.onUnequip = (data) => {
 
 // Name
 exports.name = "Stasis Prison"
+
+// Tags
+exports.tags = ["chastity"]

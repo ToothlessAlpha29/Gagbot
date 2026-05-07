@@ -3,3 +3,6 @@ exports.denialCoefficient = (data) => { return 4 }
 
 // Name
 exports.name = "Cyber Doll Bra"
+
+// Tags
+exports.tags = ["chastity"]

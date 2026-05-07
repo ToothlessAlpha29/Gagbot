@@ -23,6 +23,6 @@ exports.onUnequip = (data) => {
 }
 
 // Tags
-exports.tags = ["seal"]
+exports.tags = ["seal", "chastity"]
 // Name
 exports.name = "Seal of False Calm"

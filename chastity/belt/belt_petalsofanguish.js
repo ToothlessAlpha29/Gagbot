@@ -27,3 +27,6 @@ exports.category = "Chastity Belt"
 
 // Name
 exports.name = "Petals of Anguish"
+
+// Tags
+exports.tags = ["chastity"]

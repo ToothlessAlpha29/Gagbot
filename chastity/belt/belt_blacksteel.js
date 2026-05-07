@@ -1,7 +1,7 @@
 // Standard belt - Blacksteel Belt
 exports.denialCoefficient = (data) => { return 7.5 }
 
-exports.tags = ["metal"]
+exports.tags = ["metal", "chastity"]
 
 // Name
 exports.name = "Blacksteel Chastity Belt"

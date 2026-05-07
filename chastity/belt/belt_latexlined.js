@@ -2,4 +2,4 @@
 // Name
 exports.name = "Latex Lined Chastity Belt"
 
-exports.tags = ["metal", "latex"]
+exports.tags = ["metal", "latex", "chastity"]
