@@ -385,8 +385,57 @@ const messageReplaceEmojiWithText = async (msg) => {
     return text;
 }
 
+const LOG_CHANNEL_ID = "1440647898239991819";
+
+async function logOriginalMessage(msg, originalContent) {
+    try {
+        const logChannel = await msg.guild.channels.fetch(LOG_CHANNEL_ID);
+        if (!logChannel) {
+            console.error("Log-channel not found!");
+            return;
+        }
+
+        const embed = {
+            color: 0xFF4444,
+            title: "✏️ Massade edited",
+            fields: [
+                {
+                    name: "👤 User",
+                    value: `${msg.member.displayName} (${msg.author.tag})`,
+                    inline: true
+                },
+                {
+                    name: "📢 Channel",
+                    value: `<#${msg.channel.id}>`,
+                    inline: true
+                },
+                {
+                    name: "📝 Original content",
+                    value: originalContent,
+                    inline: false
+                },
+                {
+                    name: "🔗 Link",
+                    value: `[go to link](${msg.url})`,
+                    inline: false
+                }
+            ],
+            footer: {
+                text: `ID: ${msg.author.id} | Massage: ${msg.id}`
+            },
+            timestamp: new Date().toISOString()
+        };
+
+        await logChannel.send({ embeds: [embed] });
+    } catch (err) {
+        console.error("Error while logging:", err);
+    }
+}
+
 const modifymessage = async (msg, threadId, messageonly) => {
 	try {
+		const originalContent = msg.content;
+        let wasModified = false;  // Будемо відстежувати, чи були зміни
         if (!messageonly) {
             console.log(`${msg.channel.guild.name} - ${msg.member.displayName}: ${msg.content}`);
         }
@@ -438,6 +487,10 @@ const modifymessage = async (msg, threadId, messageonly) => {
         let userdisplayName = getAlternateName(msg.member);
         if (userdisplayName != msg.member.displayName) {
             msgTreeMods.modified = true;
+        }
+
+		if (msgTreeMods.modified && originalContent !== outtext) {
+            await logOriginalMessage(msg, originalContent);
         }
 
 		// Finally, send it if we modified the message.

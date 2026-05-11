@@ -25,10 +25,10 @@ module.exports = {
 		const keyType = interaction.options.getSubcommand();
 		const lockedUser = interaction.options.getUser("user") ?? interaction.user;
 
-		if (config.getKeyLossDisabled(lockedUser.id)) {
-			interaction.reply({ content: `${lockedUser} has not opted in to key discarding. ${they(lockedUser.id, true)} can do so using the \`/config\` command.`, flags: MessageFlags.Ephemeral });
-			return;
-		}
+		// if (config.getKeyLossDisabled(lockedUser.id)) {
+		// 	interaction.reply({ content: `${lockedUser} has not opted in to key discarding. ${they(lockedUser.id, true)} can do so using the \`/config\` command.`, flags: MessageFlags.Ephemeral });
+		// 	return;
+		// }
 
 		const restraint = getRestraintName(keyType, lockedUser.id);
 

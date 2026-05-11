@@ -1278,6 +1278,56 @@ async function getDisplayTexts(userID, inspectuserID) {
     // ******************
 
     return bartext.slice(1); // Cut the first linebreak for better look
+	// ****************** People in lap
+// let lappeople = [];
+
+// // Attempt to get the current guild member object for the user.
+// // however I'd have to retool the main function to narrow down to one guild. Too much work currently.
+// let inspectusername = (
+//     process.client.guilds.cache
+//         .map(guild => guild.members.cache.get(inspectuserID))
+//         .find(m => m !== undefined)
+// )?.displayName;
+
+// console.log("==== DEBUG process.heavy ====");
+
+// Object.keys(process.heavy).forEach((k) => {
+//     const heavyEntry = process.heavy[k];
+
+//     console.log("KEY:", k);
+//     console.log("VALUE:", heavyEntry);
+//     console.log("TYPE:", typeof heavyEntry);
+//     console.log("IS ARRAY:", Array.isArray(heavyEntry));
+
+//     // Detect broken entries
+//     if (!Array.isArray(heavyEntry)) {
+//         console.log("BROKEN ENTRY FOUND");
+//         console.trace();
+//         console.log("-------------------");
+//         return;
+//     }
+
+//     heavyEntry.forEach((h, index) => {
+//         console.log(`ITEM ${index}:`, h);
+
+//         // Extra validation
+//         if (!h || typeof h !== "object") {
+//             console.log("INVALID ITEM:", h);
+//             return;
+//         }
+
+//         // If its a lap and starts with the inspect user's name, then it's OURS
+//         if (
+//             h.type === "dominants_lap" &&
+//             typeof h.displayname === "string" &&
+//             h.displayname.startsWith(inspectusername ?? "undefined")
+//         ) {
+//             lappeople.push(k);
+//         }
+//     });
+
+//     console.log("-------------------");
+// });
 }
 
 exports.generateOutfitModal = generateOutfitModal;

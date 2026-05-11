@@ -299,6 +299,11 @@ client.on("messageCreate", async (msg) => {
             channelid = msg.channel.parentId
         }
         if (process.webhook[channelid]) {
+            if ((getBotOption("bot-allowkeyfinding") != "Enabled") || (getOption(msg.author.id, "canfindkeys") != "enabled")) {
+                console.log("User can't find key!");
+                console.log(getBotOption("bot-allowkeyfinding"));
+                console.log(getOption(msg.author.id, "canfindkeys"));
+            }
             if ((getBotOption("bot-allowkeyfinding") == "Enabled") && (getOption(msg.author.id, "canfindkeys") == "enabled")) {
                 handleKeyFinding(msg);
             }

@@ -171,6 +171,7 @@ module.exports = {
 					} else {
 						failedtext = `${failedtext}\n-# ❌ ***Failed to create webhook or missing perms for #${channel.name}***`;
 					}
+					console.log(failedtext);
 				});
 				function sleep(ms) {
 					return new Promise((resolve) => setTimeout(resolve, ms));

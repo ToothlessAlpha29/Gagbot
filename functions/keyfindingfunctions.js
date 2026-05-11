@@ -20,17 +20,20 @@ const MAX_FUMBLE_CHANCE = 0.95;
 
 // returns how heavy the fumble was (usually 1 = regular, 2 = drop key)
 function rollKeyFumble(keyholder, locked) {
+    //return 2;
 	if (process.keyfumbling == undefined) {
 		process.keyfumbling = {};
 	}
     // Disabled key fumbling, just don't.
-    return 0;
+    console.log("Trying to lose key!")
+
     
 	// get the initial fumble chance
-	let fumbleChance = getFumbleChance(keyholder, locked);
-
+	//let fumbleChance = getFumbleChance(keyholder, locked);
+    let fumbleChance = 0.2;
+    console.log(fumbleChance);
 	// just save time and skip this thing if they cannot fumble
-	if (fumbleChance <= 0) return 0;
+	//if (fumbleChance <= 0) return 0;
     console.log(fumbleChance)
     
     // Fumbles have AT MOST 95% chance to happen.
@@ -104,7 +107,32 @@ function getFumbleChance(keyholder, locked) {
 }
 
 async function handleKeyFinding(message) {
+    //console.log("Trying to find key");
     let processvars = ["collar", "chastity", "chastitybra"];
+    let foundAny = false;
+    
+    processvars.forEach((pv) => {
+        if (process[pv] == undefined) { process[pv] = {}}
+        Object.entries(process[pv]).forEach(async (en) => {
+            if (en[1]?.fumbled) {
+                if (!foundAny) {
+                    console.log("There is a fumbled key! ");
+                    console.log("=== Available Fumbled Keys ===");
+                }
+                foundAny = true;
+                let wearerName = "Unknown";
+                try {
+                    const wearer = await message.guild.members.fetch(en[0]);
+                    wearerName = wearer.user.tag;
+                } catch(e) {}
+                
+                console.log(`  - ${pv.toUpperCase()}: Wearer=${wearerName} (${en[0]}), Keyholder=${en[1].keyholder}, Type=${en[1].chastitytype || en[1].collartype || "unknown"}`);
+            }
+        });
+    });
+    if (foundAny) {
+        console.log("==============================");
+    }
     processvars.forEach((pv) => {
         if (process[pv] == undefined) { process[pv] = {}}
         Object.entries(process[pv]).forEach(async (en) => {
@@ -176,13 +204,13 @@ async function handleKeyFinding(message) {
 // Discards a key held by keyholderid for userid. Varying effect based on device.
 function discardKey(userid, keyholderid, device) {
     // If it isnt one of the three devices we know about, go away
-    if ((device != "collar") && (device != "chastity belt") && (device != "chastity bra")) { 
+    if ((device != "collar") && (device != "chastitybelt") && (device != "chastitybra")) { 
         console.log(`Unknown device ${device}. Use "collar", "chastity belt" or "chastity bra"`)
         return false 
     }
     let processvar = "collar";
-    if (device == "chastity belt") { processvar = "chastity" }
-    if (device == "chastity bra") { processvar = "chastitybra" }
+    if (device == "chastitybelt") { processvar = "chastity" }
+    if (device == "chastitybra") { processvar = "chastitybra" }
     // If this is undefined, we have some big problems lol
     let typelocked = "none";
     if (process[processvar] == undefined) { process[processvar] = {} }
@@ -207,11 +235,11 @@ function discardKey(userid, keyholderid, device) {
 
 function getFindFunction(restraint) {
 	switch (restraint) {
-		case "chastity belt":
+		case "chastitybelt":
 			return findChastityKey;
 		case "collar":
 			return findCollarKey;
-		case "chastity bra":
+		case "chastitybra":
 			return findChastityBraKey;
 		default:
 			console.log(`No find function for restraint ${restraint}`);

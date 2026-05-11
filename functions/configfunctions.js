@@ -656,8 +656,7 @@ const configoptions = {
 				return false;
 			},
 		},
-        // Removing canfindkeys for now as it is currently not used
-        /*canfindkeys: {
+        canfindkeys: {
 			name: "Find Keys",
 			desc: "Can you discover misplaced keys that others dropped?",
 			choices: [
@@ -685,7 +684,7 @@ const configoptions = {
 			disabled: (userID) => {
 				return false;
 			}, // if true, button is greyed out
-		},*/
+		},
         majorrestraint: {
             name: "Major Restraints from Others",
             desc: "Can others offer to put chastity, mittens, heavy bondage or masks on you? You must accept the prompt for it to be permitted unless that user has collar key access for you. You must have DMs from this server turned on to utilize this option.",
@@ -2684,6 +2683,7 @@ function generateConfigModal(interaction, menuset = "General", page, statustext)
 				if (process.configs.servers[interaction.guildId] != undefined) {
 					let currentrole = "Select allowed channels...";
 					let channelsmentioned = [];
+					//setServerOption(interaction.guildId, "server-channelspermitted", []);
 					if (getServerOption(interaction.guildId, "server-channelspermitted") && getServerOption(interaction.guildId, "server-channelspermitted").length > 0) {
 						channelsmentioned = getServerOption(interaction.guildId, "server-channelspermitted");
 					}
