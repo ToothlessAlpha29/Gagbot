@@ -13,7 +13,7 @@ let wearabletypes = [
 	{ name: "Vine Hair", value: "hair_vine", category: "Body Part", colorable: true, uniqueColors: ["Flowery", "Verdant"] , forbiddenColors: ["Black", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown"] },
 	{ name: "Vampire Fangs", value: "fangs_vampire", category: "Body Part" },
 	{ name: "Halo", value: "halo", category: "Body Part", colorable: true, uniqueColors: ["Angelic", "Ghostly", "Ethereal", "Holy Light", "Cyber"] },
-    { name: "Eyes", value: "eyes", category: "Body Part", colorable: true, uniqueColors: ["Starry", "Stellar", "Cosmic", "Fiery", "Verdant", "Angelic", "Cybernetic", "Snake", "Cat", "Demon", "Synthetic"],  },
+    { name: "Eyes", value: "eyes", category: "Body Part", colorable: true, uniqueColors: ["Starry", "Stellar", "Cosmic", "Fiery", "Verdant", "Angelic", "Cybernetic", "Snake", "Cat", "Demon", "Synthetic", "Heart"],  },
     { name: "Shell", value: "wearshell", category: "Body Part", colorable: true, uniqueColors: ["Porcelain", "Cybernetic", "Titanium", "Molten"], forbiddenColors: ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown"] },
     { name: "Frame", value: "wearframe", category: "Body Part", colorable: true, uniqueColors: ["Porcelain", "Cybernetic", "Titanium", "Molten"], forbiddenColors: ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown"] },
     
