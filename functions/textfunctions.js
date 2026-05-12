@@ -4220,7 +4220,7 @@ const texts_wear = {
 					only: (t) => {
 						return t.c2.endsWith("Eyes");
 					},
-					text: `USER_TAG passes a hand over TARGET_TAG's eyes and the transform into a pair of VAR_C2!`,
+					text: `USER_TAG passes a hand over TARGET_TAG's eyes and they transform into a pair of VAR_C2!`,
 				},
                 {
 					only: (t) => {
