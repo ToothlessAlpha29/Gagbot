@@ -165,4 +165,7 @@ webhooks.txt
 /downloaded
 /backups
 crashlog.txt
-toyusers.txtrecordedmessages.txt
+toyusers.txt
+delveuserdata.txt
+recordedmessages.txt
+userstats.txt
