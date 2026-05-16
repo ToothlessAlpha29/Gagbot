@@ -23,7 +23,7 @@ let wearabletypes = [
 	{ name: "Claws", value: "claws", colorable: true, category: "Hands", uniqueColors: ["Iridescent", "Sparkly", "Glow-in-the-Dark", "Crystalline", "Ultraviolet", "Sanguine", "Holographic",] },
 	{ name: "Scales", value: "scales", colorable: true, category: "Body Part",uniqueColors: ["Iridescent", "Sparkly", "Glow-in-the-Dark", "Crystalline", "Translucent", "Ultraviolet", "Sanguine", "Holographic"] },
 	{ name: "Hide", value: "skin_hide", colorable: true, category: "Body Part",uniqueColors: ["Iridescent", "Sparkly", "Glow-in-the-Dark", "Crystalline", "Translucent", "Ultraviolet", "Sanguine", "Holographic"] },
-	{ name: "Dragon Saddle", value: "saddle_dragon", category: "Cosplay", colorable: true uniqueColors: ["Leather", "Latex", "Moulded", "Ancient"] },
+	{ name: "Dragon Saddle", value: "saddle_dragon", category: "Cosplay", colorable: true, uniqueColors: ["Leather", "Latex", "Moulded", "Ancient"] },
 
 
    
@@ -79,28 +79,28 @@ let wearabletypes = [
 
 	// Ponygirls  ##WILL UPDATE WITH NEW MATERIAL FUNCTION
 	{ name: "Leather Pony Boots", value: "ponyboots_leather", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
-	{ name: "Leather Thigh Belts", value: "thighbelts_leather", category: "Cosplay",colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Leather Pony Tack", value: "ponytack_leather", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
+	{ name: "Leather Thigh Belts", value: "thighbelts_leather", category: "Cosplay",colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Leather Pony Tack", value: "ponytack_leather", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
 	{ name: "Leather Head Harness", value: "headharness_leather", category: "Cosplay", uniqueColors: ["Spiked"] },
-	{ name: "Leather Blinkers", value: "blinkers_leather", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Leather Reins", value: "reins_leather", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Leather Saddle", value: "saddle_leather", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
+	{ name: "Leather Blinkers", value: "blinkers_leather", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Leather Reins", value: "reins_leather", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Leather Saddle", value: "saddle_leather", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
 	// LatexPonygirls
-	{ name: "Latex Pony Boots", value: "ponyboots_latex", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Latex Thigh Belts", value: "thighbelts_latex", category: "Cosplay",colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Latex Pony Tack", value: "ponytack_latex", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
+	{ name: "Latex Pony Boots", value: "ponyboots_latex", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Latex Thigh Belts", value: "thighbelts_latex", category: "Cosplay",colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Latex Pony Tack", value: "ponytack_latex", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
 	{ name: "Latex Head Harness", value: "headharness_latex", category: "Cosplay", uniqueColors: ["Spiked"] },
-	{ name: "Latex Blinkers", value: "blinkers_latex", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Latex Reins", value: "reins_latex", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
-	{ name: "Latex Saddle", value: "saddle_latex", category: "Cosplay", colorable: true uniqueColors: ["Spiked"] },
+	{ name: "Latex Blinkers", value: "blinkers_latex", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Latex Reins", value: "reins_latex", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
+	{ name: "Latex Saddle", value: "saddle_latex", category: "Cosplay", colorable: true, uniqueColors: ["Spiked"] },
 	// SteelPonygirls
-	{ name: "Steel Pony Boots", value: "ponyboots_steel", category: "Cosplay", colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
-	{ name: "Steel Thigh Belts", value: "thighbelts_steel", category: "Cosplay",colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
-	{ name: "Steel Pony Tack", value: "ponytack_steel", category: "Cosplay", colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Pony Boots", value: "ponyboots_steel", category: "Cosplay", colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Thigh Belts", value: "thighbelts_steel", category: "Cosplay",colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Pony Tack", value: "ponytack_steel", category: "Cosplay", colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
 	{ name: "Steel Head Harness", value: "headharness_steel", category: "Cosplay", uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
-	{ name: "Steel Blinkers", value: "blinkers_steel", category: "Cosplay", colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
-	{ name: "Steel Reins", value: "reins_steel", category: "Cosplay", colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
-	{ name: "Steel Saddle", value: "saddle_steel", category: "Cosplay", colorable: true uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Blinkers", value: "blinkers_steel", category: "Cosplay", colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Reins", value: "reins_steel", category: "Cosplay", colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
+	{ name: "Steel Saddle", value: "saddle_steel", category: "Cosplay", colorable: true, uniqueColors: ["Spiked", "Riveted", "Welded", "Seamless"] },
 
 
 	// Maids and Butlers
@@ -594,6 +594,8 @@ const getBaseWearable = (type) => {
         if (!returnval) {
             let colortosearch = type.split("_").slice(0,-1).join("_"); // remove the last element which should only be the color
             returnval = wearabletypes.find((w) => w.value == colortosearch)
+			let materialtosearch = type.split("_").slice(0,-1).join("_"); // remove the last element which should only be the material
+            returnval = wearabletypes.find((w) => w.value == materialtosearch)
         }
         return returnval;
     }
@@ -605,6 +607,7 @@ const getBaseWearable = (type) => {
 exports.wearabletypes = wearabletypes;
 exports.loadWearables = loadWearables;
 exports.wearablecolors = colors;
+exports.wearablematerials = materials;
 
 exports.assignWearable = assignWearable;
 exports.getWearable = getWearable;
