@@ -26,6 +26,8 @@ let wearabletypes = [
 	{ name: "Dragon Saddle", value: "saddle_dragon", category: "Cosplay", colorable: true, uniqueColors: ["Leather", "Latex", "Moulded", "Ancient"] },
 
 
+
+
    
 	// Hats
 	{ name: "Stylish Hat", value: "stylish_hat", category: "Hat", colorable: true },
@@ -368,16 +370,20 @@ let wearabletypes = [
 	//NEW STUFF
 	{ name: "Livestock Tag", value: "earrings", colorable: true, category: "Body Modification", tags: { piercing: true, metal: true }, uniqueColors: ["Silver", "Gold", "Platinum", "Cobalt", "Black", "Starmetal", "Titanium"] },
 
-	
+	//TEST
+	{ name: "HORSECOCK", value: "HORSECOCK", category: "Upper Body", colorable: true, material: true, stylable: true, modifier: true, forbiddenMaterials: ["Leafy"] },
+
 	
 	
 ];
 
 // Each colorable and material entry above will have a copy of the following added
-// Unless it is excluded on forbiddenColors or forbiddenMaterials.
+// Unless it is excluded on forbidden(Colors,Materials,Styles,Modifiers)
+// wearable TRANSFORMERS (the word modifier is already used)
 const colors = ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown", "Rainbow", "Gaybow", "Clear", "Vantablack", "Shifting", "Opalescent", "Holographic", "Prismatic", "Patterned"];
-const materials = ["Copper", "Bronze", "Brass", "Silver", "Gold", "Platinum", "Tungsten", "Starmetal", "Mithril", "Adamantium", "Floral", "Livingwood", "Leafy", "Laurel", "Ceramic", "Glass", "Crystal", "Obsidian", "Jade", "Amethyst", "Ruby", "Emerald", "Sapphire", "Topaz", "Latex", "PVC", "Silicone", "Flesh", "Tentacle", "Bone", "Leather", "Holographic", "Hardlight"];
-
+const material = ["Copper", "Bronze", "Brass", "Silver", "Gold", "Platinum", "Tungsten", "Starmetal", "Mithril", "Adamantium", "Floral", "Livingwood", "Leafy", "Laurel", "Ceramic", "Glass", "Crystal", "Obsidian", "Jade", "Amethyst", "Ruby", "Emerald", "Sapphire", "Topaz", "Latex", "PVC", "Silicone", "Flesh", "Tentacle", "Bone", "Leather", "Holographic", "Hardlight"];
+const style = ["Frilly", "Spartan", "Masterwork", "Handmade"]
+const modifier =["Cursed", "Blessed", "Musky"]
 
 // This is a list of tags to add to the wearables, assuming they match a word here. 
 // This should NOT be used to add a bunch of random tags. Categories should be relatively
@@ -388,6 +394,7 @@ const tagstoadd = [
     { match: `latex`, tag: "latex" },
 	{ match: `living`, tag: "living" },
 	{ match: `tentacle`, tag: "living" },
+	{ match: `flesh`, tag: "living" },
     { match: `leather`, tag: "leather" },
     { match: `lipstick`, tag: "makeup" },
     { match: `eyeliner`, tag: "makeup" },
@@ -408,8 +415,11 @@ const tagstoadd = [
 const loadWearables = async () => {
 	// Copy the array so we dont mutate the original lmao
 	let wearablestoadd = wearabletypes.slice(0);
-	// Iterate over each wearable type, filtering only the ones that are colorable.
+	// Iterate over each wearable type, filtering only the ones that are transformable.
 	let colorables = wearabletypes.filter((w) => w.colorable);
+	let material = wearabletypes.filter((w) => w.material);
+	let stylable = wearabletypes.filter((w) => w.stylable);
+	let modifier = wearabletypes.filter((w) => w.modifier);
 
 	// Now for each colorable, add an instance of each color to the list.
 	colorables.forEach((w) => {
@@ -431,9 +441,9 @@ const loadWearables = async () => {
 	});
 	
 	//Now for each material, add and instance of each material to the list// Now for each colorable, add an instance of each color to the list.
-	material.forEach((w) => {
+	materials.forEach((w) => {
 		let uniqueMaterials = w.uniqueMaterials ?? [];
-		// Filter out any forbidden colors, if specified;
+		// Filter out any forbidden materials, if specified;
 		let materialss = materials.slice(0);
 		if (w.forbiddenMaterials) {
 			materialss = materialss.filter((c) => !w.forbiddenMaterials.includes(c));
@@ -442,6 +452,44 @@ const loadWearables = async () => {
 		let materialstoadd = materialss.concat(...uniqueMaterials);
 		// Now for each color, push to the array.
 		materialstoadd.forEach((c) => {
+			let newobject = Object.assign({}, w);
+			newobject.name = `${c} ${w.name}`;
+			newobject.value = `${w.value}_${c.toLowerCase()}`;
+			wearablestoadd.push(newobject);
+		});
+	});
+	
+	//Now for each style, add and instance of each style to the list// Now for each colorable, add an instance of each color to the list.
+	styles.forEach((w) => {
+		let uniquestyles = w.uniquestyles ?? [];
+		// Filter out any forbidden styles, if specified;
+		let styless = styles.slice(0);
+		if (w.forbiddenstyles) {
+			styless = styless.filter((c) => !w.forbiddenstyles.includes(c));
+		}
+		// Add all the colors and their unique forms
+		let stylestoadd = styless.concat(...uniquestyles);
+		// Now for each color, push to the array.
+		stylestoadd.forEach((c) => {
+			let newobject = Object.assign({}, w);
+			newobject.name = `${c} ${w.name}`;
+			newobject.value = `${w.value}_${c.toLowerCase()}`;
+			wearablestoadd.push(newobject);
+		});
+	});
+	
+	//Now for each modifier, add and instance of each modifier to the list// Now for each colorable, add an instance of each color to the list.
+	modifiers.forEach((w) => {
+		let uniquemodifiers = w.uniquemodifiers ?? [];
+		// Filter out any forbidden modifiers, if specified;
+		let modifierss = modifiers.slice(0);
+		if (w.forbiddenmodifiers) {
+			modifierss = modifierss.filter((c) => !w.forbiddenmodifiers.includes(c));
+		}
+		// Add all the colors and their unique forms
+		let modifierstoadd = modifierss.concat(...uniquemodifiers);
+		// Now for each color, push to the array.
+		modifierstoadd.forEach((c) => {
 			let newobject = Object.assign({}, w);
 			newobject.name = `${c} ${w.name}`;
 			newobject.value = `${w.value}_${c.toLowerCase()}`;
@@ -610,6 +658,8 @@ exports.wearabletypes = wearabletypes;
 exports.loadWearables = loadWearables;
 exports.wearablecolors = colors;
 exports.wearablematerials = materials;
+exports.wearablestyles = styles;
+exports.wearablemodifiers = modifiers;
 
 exports.assignWearable = assignWearable;
 exports.getWearable = getWearable;
