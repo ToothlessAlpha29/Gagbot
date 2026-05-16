@@ -373,9 +373,11 @@ let wearabletypes = [
 	
 ];
 
-// Each colorable entry above will have a copy of the following added
-// Unless it is excluded on forbiddenColors.
-const colors = ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown"];
+// Each colorable and material entry above will have a copy of the following added
+// Unless it is excluded on forbiddenColors or forbiddenMaterials.
+const colors = ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown", "Rainbow", "Gaybow", "Clear", "Vantablack", "Shifting", "Opalescent", "Holographic", "Prismatic", "Patterned"];
+const materials = ["Copper", "Bronze", "Brass", "Silver", "Gold", "Platinum", "Tungsten", "Starmetal", "Mithril", "Adamantium", "Floral", "Livingwood", "Leafy", "Laurel", "Ceramic", "Glass", "Crystal", "Obsidian", "Jade", "Amethyst", "Ruby", "Emerald", "Sapphire", "Topaz", "Latex", "PVC", "Silicone", "Flesh", "Tentacle", "Bone", "Leather", "Holographic", "Hardlight"];
+
 
 // This is a list of tags to add to the wearables, assuming they match a word here. 
 // This should NOT be used to add a bunch of random tags. Categories should be relatively
