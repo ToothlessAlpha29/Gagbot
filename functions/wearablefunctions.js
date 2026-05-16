@@ -381,9 +381,9 @@ let wearabletypes = [
 // Unless it is excluded on forbidden(Colors,Materials,Styles,Modifiers)
 // wearable TRANSFORMERS (the word modifier is already used)
 const colors = ["Black", "Red", "Purple", "Green", "Orange", "Red", "Pink", "White", "Yellow", "Cyan", "Aqua", "Blue", "Indigo", "Gray", "Brown", "Rainbow", "Gaybow", "Clear", "Vantablack", "Shifting", "Opalescent", "Holographic", "Prismatic", "Patterned"];
-const material = ["Copper", "Bronze", "Brass", "Silver", "Gold", "Platinum", "Tungsten", "Starmetal", "Mithril", "Adamantium", "Floral", "Livingwood", "Leafy", "Laurel", "Ceramic", "Glass", "Crystal", "Obsidian", "Jade", "Amethyst", "Ruby", "Emerald", "Sapphire", "Topaz", "Latex", "PVC", "Silicone", "Flesh", "Tentacle", "Bone", "Leather", "Holographic", "Hardlight"];
-const style = ["Frilly", "Spartan", "Masterwork", "Handmade"]
-const modifier =["Cursed", "Blessed", "Musky"]
+const materials = ["Copper", "Bronze", "Brass", "Silver", "Gold", "Platinum", "Tungsten", "Starmetal", "Mithril", "Adamantium", "Floral", "Livingwood", "Leafy", "Laurel", "Ceramic", "Glass", "Crystal", "Obsidian", "Jade", "Amethyst", "Ruby", "Emerald", "Sapphire", "Topaz", "Latex", "PVC", "Silicone", "Flesh", "Tentacle", "Bone", "Leather", "Holographic", "Hardlight"];
+const styles = ["Frilly", "Spartan", "Masterwork", "Handmade"]
+const modifiers =["Cursed", "Blessed", "Musky"]
 
 // This is a list of tags to add to the wearables, assuming they match a word here. 
 // This should NOT be used to add a bunch of random tags. Categories should be relatively
