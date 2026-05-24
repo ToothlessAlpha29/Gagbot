@@ -417,9 +417,9 @@ const loadWearables = async () => {
 	let wearablestoadd = wearabletypes.slice(0);
 	// Iterate over each wearable type, filtering only the ones that are transformable.
 	let colorables = wearabletypes.filter((w) => w.colorable);
-	let material = wearabletypes.filter((w) => w.materials);
-	let stylable = wearabletypes.filter((w) => w.styles);
-	let modifier = wearabletypes.filter((w) => w.modifiers);
+	let materials = wearabletypes.filter((w) => w.material);
+	let stylables = wearabletypes.filter((w) => w.style);
+	let modifiers = wearabletypes.filter((w) => w.modifier);
 
 	// Now for each colorable, add an instance of each color to the list.
 	colorables.forEach((w) => {
